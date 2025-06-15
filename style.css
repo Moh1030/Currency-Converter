@@ -1,0 +1,326 @@
+/* Custom font 'Inter' */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Base body styles for layout and gradient background */
+.app-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+  background: linear-gradient(135deg, #6b9071, #aec3b0, #e3eed4);
+  margin: 0;
+}
+
+/* New layout for side-by-side sections */
+.main-layout {
+  display: flex; /* Default to column for small screens */
+  flex-direction: column;
+  align-items: center; /* Center items when in column layout */
+  gap: 4rem; /* Increased vertical gap between stacked sections */
+  width: 100%;
+  max-width: 900px; /* A reasonable max-width for the entire two-column layout */
+}
+
+@media (min-width: 1024px) { /* For larger screens, switch to grid */
+  .main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    align-items: flex-start; /* Align items to the top of their grid cells */
+    gap: 4rem; /* Increased horizontal gap between columns */
+  }
+}
+
+/* Individual sections within main-layout to ensure they fill their grid/flex space */
+.main-converter-section,
+.popular-conversions-section {
+    width: 100%; /* Ensure they take full width in their respective layouts */
+}
+
+/* Glassmorphism effect for shared containers */
+.glass-container {
+  background: rgba(227, 238, 212, 0.2); /* #e3eed4 with opacity */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(227, 238, 212, 0.3);
+  border-right-color: rgba(227, 238, 212, 0.2);
+  border-bottom-color: rgba(227, 238, 212, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border-radius: 1.5rem; /* 24px */
+  width: 100%; /* Make it fill its parent */
+  margin: 0 auto; /* Center it if its parent doesn't handle centering */
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.glass-container:hover {
+  transform: scale(1.05);
+}
+
+/* Main Heading */
+.main-heading {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 800; /* font-extrabold */
+  text-align: center;
+  color: #0f2a1d;
+  margin-bottom: 2.5rem; /* mb-10 */
+  letter-spacing: -0.05em; /* tracking-tight */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+
+/* Form Spacing */
+.currency-form > div {
+  margin-bottom: 1.75rem; /* Equivalent to space-y-7 */
+}
+
+/* Amount Input Section */
+.amount-section .form-label {
+  margin-bottom: 0.75rem; /* mb-3 */
+}
+
+.amount-input {
+  width: 95%;
+  padding: 1rem;
+  border: 1px solid rgba(15,42,29,0.3);
+  border-radius: 0.75rem; /* rounded-xl */
+  outline: none;
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+  color: #0f2a1d;
+  background-color: rgba(174,195,176,0.3); /* bg-[#aec3b0]/30 */
+  transition: all 0.2s ease-in-out;
+}
+
+.amount-input::placeholder {
+  color: #375534;
+}
+
+.amount-input:focus {
+  box-shadow: 0 0 0 4px rgba(107,144,113,0.5); /* focus:ring-4 focus:ring-[#6b9071] */
+}
+
+/* Form Labels */
+.form-label {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 500; /* font-medium */
+  color: #0f2a1d;
+}
+
+/* Dropdown Section (From/To/Swap Icon) */
+.dropdown {
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr; /* From (flexible), Swap Icon (fixed), To (flexible) */
+  align-items: center; /* Vertically align items */
+  gap: 1.5rem; /* Space between columns */
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.75rem; /* Part of form space-y-7 */
+}
+
+.from-section,
+.to-section {
+  width: auto; /* Let grid system manage width */
+}
+
+.from-section .form-label,
+.to-section .form-label {
+  margin-bottom: 0.75rem; /* mb-3 */
+}
+
+/* Select Box Container */
+.select-box {
+  display: flex;
+  align-items: center;
+  background-color: rgba(174,195,176,0.3); /* bg-[#aec3b0]/30 */
+  border: 1px solid rgba(15,42,29,0.3);
+  border-radius: 0.75rem; /* rounded-xl */
+  padding: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+  transition: all 0.2s ease-in-out;
+}
+
+.select-box:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Flag Icons */
+.flag-icon {
+  width: 2.5rem; /* w-10 */
+  height: 2.5rem; /* h-10 */
+  border-radius: 50%;
+  margin-right: 1rem; /* mr-4 */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+  border: 1px solid rgba(15,42,29,0.2);
+}
+
+/* Currency Select Element */
+.currency-select {
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23375534" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.5em;
+  padding-right: 2.5rem; /* Make space for the arrow */
+  background-color: transparent;
+  color: #0f2a1d;
+  font-size: 1.125rem; /* text-lg */
+  flex-grow: 1; /* flex-grow */
+  border: none; /* border-none */
+  outline: none; /* focus:outline-none */
+  cursor: pointer;
+}
+
+/* Swap Icon Container */
+.swap-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgba(174, 195, 176, 0.2); /* #aec3b0 with opacity */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(174, 195, 176, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  flex-shrink: 0;
+  justify-self: center; /* Center swap icon horizontally within its grid cell */
+  margin: 0; /* Remove any conflicting margins */
+  margin-top: 50px;
+}
+
+.swap-icon-container:hover {
+  background: rgba(174, 195, 176, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+}
+
+.swap-icon-container:active {
+  background: rgba(174, 195, 176, 0.1);
+  transform: scale(0.95);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.swap-icon-container i { /* Styling for the Font Awesome icon inside the container */
+    color: #0f2a1d;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Message Display */
+.message-display {
+  font-size: 1.5rem; /* text-2xl */
+  text-align: center;
+  color: #0f2a1d;
+  font-weight: 700; /* font-bold */
+  margin-top: 2rem; /* mt-8 */
+  margin-bottom: 1.5rem; /* mb-6 */
+  padding: 0.75rem 1.25rem; /* py-3 px-5 */
+  background-color: rgba(174,195,176,0.5); /* bg-[#aec3b0]/50 */
+  border: 1px solid rgba(15,42,29,0.4);
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /* shadow-inner */
+}
+
+/* Glassmorphism Button */
+.conversion-button {
+  width: 100%;
+  padding: 1rem; /* py-4 */
+  border-radius: 0.75rem; /* rounded-xl */
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700; /* font-bold */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+
+  /* Enhanced glass effect for the button */
+  background: rgba(107, 144, 113, 0.5); /* Increased opacity */
+  border: 1px solid rgba(107, 144, 113, 0.6); /* Stronger border */
+  border-right-color: rgba(107, 144, 113, 0.3);
+  border-bottom-color: rgba(107, 144, 113, 0.3);
+}
+
+.conversion-button:hover {
+  background: rgba(107, 144, 113, 0.6); /* Even more opaque on hover */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Stronger hover shadow */
+}
+.conversion-button:active {
+  background: rgba(107, 144, 113, 0.4); /* More transparent on click */
+}
+
+
+/* Popular Conversions Section */
+.popular-conversions {
+  /* This now also uses .glass-container for its base styling, but with specific overrides */
+  margin-top: 0; /* Handled by parent main-layout gap */
+  padding: 2rem; /* Ensure consistent padding with main converter */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); /* Ensure shadow matches main container */
+  margin-left: 50px;
+}
+
+.popular-conversions-heading {
+  color: #0f2a1d; /* Darkest green for clear heading */
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.popular-conversion-item {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background-color: rgba(107, 144, 113, 0.2); /* #6b9071 with opacity for items */
+  border: 1px solid rgba(107, 144, 113, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #0f2a1d; /* Darkest text for readability */
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin: 10px;
+}
+
+.popular-conversion-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Flexbox for popular conversion items to arrange them in a row with spacing */
+.popular-conversions-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  gap: 1.5rem; /* Space between each popular conversion item */
+  justify-content: center; /* Center the items if there's extra space */
+  list-style: none; /* Remove any default list styling */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+/* Ensure popular conversion items take roughly half width, adjusting for gap */
+.popular-conversion-item {
+  flex: 1 1 calc(50% - 0.75rem); /* Allows two items per row with 1.5rem gap */
+  max-width: calc(60% - 0.75rem); /* Explicit max-width for consistency */
+}
+
+@media (max-width: 600px) { /* Adjust for smaller screens to ensure single column if needed */
+  .popular-conversion-item {
+    flex: 1 1 100%; /* Make items take full width on very small screens */
+    max-width: 100%;
+  }
+}
+
+
+/* Adjust initial margin-bottom for form children to emulate space-y-7 without breaking first child */
+.currency-form > *:not(:last-child) {
+    margin-bottom: 1.75rem;
+}
+.currency-form > .message-display {
+    margin-top: 2rem; /* Specific override for the message div */
+}

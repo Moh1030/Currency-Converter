@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Google Fonts for Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="app-body">
+    <!-- New wrapper for side-by-side layout -->
+    <div class="main-layout">
+      <!-- Main Converter Section -->
+      <div class="main-converter-section">
+          <div class="main-container glass-container">
+            <h2 class="main-heading">Global Currency Exchange</h2>
+            <form class="currency-form">
+              <!-- Amount Input Section -->
+              <div class="amount-section">
+                <p class="form-label">Enter Amount</p>
+                <input
+                  id="amountInput"
+                  value="1"
+                  type="number"
+                  min="0.01"
+                  step="0.01"
+                  class="amount-input"
+                />
+              </div>
+
+              <!-- Dropdown Section -->
+              <div class="dropdown">
+                <!-- From Currency -->
+                <div class="from-section">
+                  <p class="form-label">From</p>
+                  <div class="select-box">
+                    <img id="fromFlag" src="https://flagsapi.com/US/flat/64.png" alt="From Flag" class="flag-icon" onerror="this.onerror=null;this.src='https://placehold.co/64x64/cccccc/ffffff?text=Flag';" />
+                    <select name="from" id="fromSelect" class="currency-select">
+                      <!-- Options will be populated by JavaScript -->
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Exchange Icon Container -->
+                <div id="swapIconContainer" class="swap-icon-container">
+                  <i id="swapIcon" class="fa-solid fa-arrow-right-arrow-left"></i>
+                </div>
+
+                <!-- To Currency -->
+                <div class="to-section">
+                  <p class="form-label">To</p>
+                  <div class="select-box">
+                    <img id="toFlag" src="https://flagsapi.com/IN/flat/64.png" alt="To Flag" class="flag-icon" onerror="this.onerror=null;this.src='https://placehold.co/64x64/cccccc/ffffff?text=Flag';" />
+                    <select name="to" id="toSelect" class="currency-select">
+                      <!-- Options will be populated by JavaScript -->
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Message and Button -->
+              <div class="message-display">
+                1 USD = 80 INR
+              </div>
+              <button type="submit" class="glass-button conversion-button">
+                Get Exchange Rate
+              </button>
+            </form>
+          </div>
+      </div>
+
+      <!-- Popular Conversions Section -->
+      <div class="popular-conversions-section">
+          <div id="popular-conversions-container" class="popular-conversions glass-container">
+            <h3 class="popular-conversions-heading">Popular Conversions</h3>
+            <!-- Popular conversions will be loaded here by JavaScript -->
+          </div>
+      </div>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+  </body>
+</html>
